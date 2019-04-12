@@ -1,0 +1,42 @@
+#include("./_layout.html")
+#@mylaout()
+<!-- 首页内容 -->
+#define content()
+<div class="container">
+    <div class="row">
+        #articlePage(pageSize=12)
+        #for(article : articlePage.list)
+        <div class="col-lg-4 col-md-4">
+            <div class="card">
+                <div class="card-img">
+                    <a href="#(article.url)">
+                        <img src="#(article.showImage ? article.showImage  : 'img/default-img.png')"
+                            class="card-img-top" alt="#(article.title)" height="200" />
+                        <div class="archive-content">#maxLength(article.text,90)</div>
+                    </a>
+                </div>
+                <div class="card-body">
+                    <div class="yy-index-title"><a href="#(article.url)"> #(article.title) </a> </div>
+                    <div class="pull-left yy-con-info"><i class="fa fa-calendar" aria-hidden="true"></i>
+                        #date(article.created,'MM-dd') </div>
+                    <div class="pull-right yy-con-info"> <i class="fa fa-eye" aria-hidden="true"></i>
+                        #(article.view_count)</div>
+                </div>
+
+            </div>
+        </div>
+        #end
+        #end
+    </div>
+</div>
+<!-- 分页 -->
+#articlePaginate()
+<nav aria-label="Page pagination-sm">
+    <ul class="pagination justify-content-center pagination-sm">
+        #for(page : pages)
+        <li class="page-item #(page.style)"><a class="page-link" href="#(page.url ??)">#(page.text)</a></li>
+        #end
+    </ul>
+</nav>
+#end
+#end

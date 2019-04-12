@@ -1,0 +1,26 @@
+#include("./_layout.html")
+#@mylaout()
+#define content()
+<div class="container yy-content">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="articleContent">
+                <div class="title">#(page.title)</div>
+                <!-- 访问量 ...-->
+                <div class="secTitleBar">
+                    <ul>
+                        <li>#(page.view_count)次浏览</li>
+                    </ul>
+                    <hr />
+                </div>
+                <!-- 内容 -->
+                <div class="articleCon">
+                    #(page.content)
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div>
+#end

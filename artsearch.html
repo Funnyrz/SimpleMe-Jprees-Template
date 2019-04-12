@@ -1,0 +1,46 @@
+#include("./_layout.html")
+#@mylaout()
+
+
+#define content()
+<header class="banner-bg-header">
+    <h1 class="banner-title">搜索</h1>
+    <h4 class="banner-sub-title">关键字"#(keyword)"搜索结果</h4>
+
+</header>
+<div class="container">
+    <div class="row">
+        #articleSearchPage(pageSize=9)
+        #for(article : articlePage.list)
+        <div class="col-lg-4 col-md-4">
+            <div class="card">
+                <div class="card-img">
+                    <img src="#(article.showImage ? article.showImage  : 'img/default-img.png')" class="card-img-top"
+                        alt="#(article.title)" height="200" />
+                    <div class="archive-content">#maxLength(article.text,90)</div>
+                </div>
+                <div class="card-body">
+                    <div class="yy-index-title"><a href="#(article.url)"> #(article.title) </a> </div>
+                    <div class="pull-left yy-con-info"><i class="fa fa-calendar" aria-hidden="true"></i>
+                        #date(article.created,'MM-dd') </div>
+                    <div class="pull-right yy-con-info"> <i class="fa fa-eye" aria-hidden="true"></i>
+                        #(article.view_count)</div>
+                </div>
+
+            </div>
+        </div>
+        #end
+        #end
+    </div>
+</div>
+<!-- 分页 -->
+#articlePaginate()
+<nav aria-label="Page pagination-sm">
+    <ul class="pagination justify-content-center pagination-sm">
+        #for(page : pages)
+        <li class="page-item #(page.style)"><a class="page-link" href="#(page.url ??)">#(page.text)</a></li>
+        #end
+    </ul>
+</nav>
+#end
+#end

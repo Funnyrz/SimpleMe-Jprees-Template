@@ -1,0 +1,91 @@
+#define mylaout()
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="HandheldFriendly" content="True">
+    <title>#(SEO_TITLE ?? (WEB_TITLE + '-' + WEB_SUBTITLE))</title>
+    <meta name="keywords" content="#(SEO_KEYWORDS)">
+    <meta name="description" content="#(SEO_DESCRIPTION)">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    #@script?()
+</head>
+
+<body>
+    <div class="cl-header container-fluid yy-top-navi" id="yy-nav">
+        <div class="header-content container">
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <a class="navbar-brand" href="/">
+                    <h4>#(WEB_TITLE)</h4>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        #for(menu : MENUS)
+                        <li class="nav-item #(menu.isActive ? 'active' : '')">
+                            <a class="nav-link" href="#(menu.url)">#(menu.text) <span
+                                    class="sr-only">(current)</span></a>
+                        </li>
+                        #end
+                        <li class="nav-item" id="search-icon">
+                            <a class="nav-link" href="javascript:void(0);"><i class="fa fa-search"
+                                    aria-hidden="true"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <!-- 模态框 -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- 模态框头部 -->
+                <div class="modal-header">
+                    <h4 class="modal-title">搜索</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- 模态框主体 -->
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="请输入关键字" aria-label="请输入关键字"
+                            aria-describedby="button-addon2" id="search-key">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2"
+                                onclick="searchArt()">搜索</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 模态框底部 -->
+            <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                </div> -->
+
+        </div>
+    </div>
+    </div>
+    <div class="yy-content">
+        #@content()
+    </div>
+
+    <div class="container yy-foot">
+        #(WEB_COPYRIGHT ? WEB_COPYRIGHT : '笔芯Mac.版权所有 Copyright @ 2019（zxacn.com）')
+    </div>
+</body>
+
+</html>
+#end

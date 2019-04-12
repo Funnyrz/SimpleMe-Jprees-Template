@@ -1,0 +1,206 @@
+#include("./_layout.html")
+#@mylaout()
+#define script()
+<script src="js/jquery.form.min.js"></script>
+#end
+#define content()
+<div class="container yy-content">
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="articleContent">
+                <div class="title">#(article.title)</div>
+                <!-- 访问量 ...-->
+                <div class="secTitleBar">
+                    <ul>
+                        <li>作者：#(article.user.nickname ??)</li>
+                        <li>分类：
+                            #articleCategories(article.id,"category")
+                            #for(category : categories)
+                            #(category.title ??)
+                            #end
+                            #end</li>
+                        <li>发表：#date(article.created)</li>
+                        <li>围观：#(article.viewCount ?? '0')</li>
+                        <li>评论：#(article.commentCount ?? '0')</li>
+                    </ul>
+                    <hr />
+                </div>
+                <!-- 内容 -->
+                <div class="articleCon">
+                    #(article.content ??)
+                </div>
+            </div>
+            #if (true)
+            <!-- 评论 -->
+            <p class="comments-text">发表评论:</p>
+            <div id="allComment" class="respond" role="form">
+                <form action="#(CPATH)/article/postComment" method="post" id="ajaxComment">
+                    <input type="hidden" name="articleId" value="#(article.id)">
+                    <input type="hidden" name="pid" id="pid">
+                    <textarea class="form-control" rows="3" id="comment" placeholder="评论下..." tabindex="1"
+                        name="content"></textarea>
+                    #if(option('article_comment_vcode_enable'))
+
+                    <div class="commentform-info">
+                        <p style="float:left;width:20%"> <img src="/commons/captcha?d=1"
+                                onclick="this.src='#(CPATH)/commons/captcha?d='+Math.random();"
+                                style="display: inline-block;"></p>
+                        <p style="float:right"> <label for="captcha">
+                                <input class="form-control" type="text" id="captcha" tabindex="2" name="captcha"
+                                    placeholder="请填写验证码" required>
+                            </label></p>
+                    </div>
+                    #end
+                    <div class="btn-group commentBtn float-right" role="group">
+                        <button name="submit" type="submit" id="submit" class="btn btn-sm btn-danger btn-block"
+                            tabindex="5">发表评论</button>
+                    </div>
+                </form>
+            </div>
+            #end
+            <!-- input end -->
+            <!-- -->
+            <p style="height:80px;"></p>
+            <div id="comments" class="responsesWrapper">
+                <h3 class="comments-title">共有 <span class="commentCount">#(article.comment_count ??
+                        0)</span> 条评论</h3>
+                <ol class="commentlist">
+                    <!--  -->
+                    #commentPage()
+                    #for(comment : commentPage.list)
+                    <li class="comment" id="li-comment-524">
+                        <div class="media">
+                            <div class="media-left">
+                                <img alt=''
+                                    src="#(comment.user.avatar ?? '/templates/jpress_simple/images/anonymous.jpg')"
+                                    class='avatar avatar-48 photo' height='48' width='48' />
+                            </div>
+                            <div class="media-body">
+                                <p class="author_name">#(comment.author ?? '匿名用户')</p>
+                                #if (comment.parent)
+                                <div class="replycontent">
+                                    <p>引用来自于<span style="color:#f00;"> #(comment.parent.author)</span> 的内容:</p>
+                                    <span class="replyc">#(comment.parent.content)</span>
+                                </div>
+                                #end
+                                <p>#(comment.text)</p>
+                            </div>
+                        </div>
+                        <div class="comment-metadata">
+                            <span class="comment-pub-time">#date(comment.created)</span>
+                            <span class="comment-btn-reply">
+                                <i class="fa fa-reply"></i>
+                                <a rel='nofollow' class='comment-reply-link' href="#comment"
+                                    onclick="reply('#(comment.author)','#(comment.id)')" data-cid="{{:comment.id}}"
+                                    data-author="">回复</a>
+                            </span>
+                        </div>
+                    </li>
+                    #end
+                    #end
+                    <!--  -->
+                </ol>
+            </div>
+
+            <!-- pagination -->
+            #commentPaginate(anchor="allComment")
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center ">
+                    #for(page : pages)
+                    <li class="page-item #(page.style)"><a class="page-link" href="#(page.url ??)">#(page.text)</a>
+                    </li>
+                    #end
+                </ul>
+            </nav>
+            #end
+        </div>
+    </div>
+</div>
+</div>
+<script>
+    $(document).ready(function () {
+        //images
+        /*$.museum($('.articleCon img'),{
+            disable_url_hash : true
+        });*/
+        var items = [];
+        $('.articleCon img').each(function (index) {
+            var $img = $(this);
+            $img.data('index', index);
+            items.push({
+                src: $img.attr('src'),
+                title: $img.attr('alt') || ' '
+            });
+        });
+        var currentViewer;
+        $('.articleCon img').click(function (e) {
+            e.preventDefault();
+            if ($('.photoviewer-modal').length) {
+                currentViewer.close();
+                currentViewer = null;
+            }
+            if (items.length) {
+                new PhotoViewer(items, {
+                    index: $(this).data('index'),
+                    fixedContent: false,
+                    callbacks: {
+                        opened: function (el) {
+                            currentViewer = this;
+                        }
+                    }
+                });
+            }
+        });
+        $(document).keyup(function (event) {
+            if (event.keyCode == 27 && currentViewer) {
+                currentViewer.close();
+                currentViewer = null;
+            }
+        });
+        /*$(document).click(function(event){
+            var $target = $(event.target);
+            if(currentViewer && !$target.closest('.photoviewer-modal').length){
+                currentViewer.isOpened && currentViewer.close();
+            }
+        });*/
+        //code
+        $('pre code').each(function (i, block) {
+            hljs.highlightBlock(block);
+        });
+        //navigator
+    });
+
+    function reply(name, cid) {
+        $('#pid').val(cid);
+        $('#comment').val('回复 @' + name + " ：");
+        $('#content').focus();
+        //$("#parent_id").val(id);
+    };
+    $('#ajaxComment').on('submit', function () {
+        debugger
+        event.preventDefault() //阻止form表单默认提交
+        $(this).ajaxSubmit({
+            type: "post",
+            success: function (data) {
+                debugger
+                if (data.state == "ok") {
+                    location.href = location.href.indexOf("#allComment") > 0 ?
+                        location.href :
+                        location.href + "#allComment";
+                    location.reload()
+                } else {
+                    alert('评论失败：' + data.message);
+                    if (data.errorCode == 9) {
+                        location.href = '#(CPATH)/user/login';
+                    }
+                }
+                $('#content').val('');
+            },
+            error: function () {
+                alert("网络错误，请稍后重试");
+            }
+        });
+        return false;
+    });
+</script>
+#end
