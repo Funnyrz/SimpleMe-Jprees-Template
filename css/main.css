@@ -7,20 +7,10 @@
     box-sizing: border-box
 }
 
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px
-}
-
-body {
-    font-family: "Helvetica Neue",
-        Helvetica,
-        Arial,
-        sans-serif;
-    font-size: 14px;
-    line-height: 1.428571429;
-    color: #333333;
-    background-color: #ffffff;
 }
 
 ::-webkit-scrollbar-track {
@@ -42,16 +32,6 @@ body {
     background-color: transparent
 }
 
-::-moz-selection {
-    color: #fff;
-    background-color: #eb5055
-}
-
-::selection {
-    color: #fff;
-    background-color: #eb5055
-}
-
 a:focus,
 button:focus,
 input:focus,
@@ -61,30 +41,11 @@ textarea:focus,
     outline: 0
 }
 
-a {
-    text-decoration: none;
-    color: #313131;
-}
-
-a:hover {
-    text-decoration: none;
-    color: #eb5055;
-}
 
 @media (min-width: 1200px) {
     .container {
         max-width: 970px;
     }
-}
-
-.yy-top-navi {
-    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.43);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 999;
-    background-color: #fff;
-    background-color: rgba(255, 255, 255, 0.95);
 }
 
 
