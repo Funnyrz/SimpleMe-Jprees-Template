@@ -2,6 +2,26 @@
 #@mylaout()
 <!-- 首页内容 -->
 #define content()
+<div class="banner">
+    <!-- header -->
+    <div class="header container">
+        <!--个人信息-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="personInfo">
+                    <div class="logo">
+                        <a href="/">
+                            <img src="#(USER.avatar??)">
+                        </a>
+                    </div>
+                    <div class="logoTheme">
+                        <h3>猛兽总是独行,牛羊才成群结对</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="container">
     <div class="row">
         #articlePage(pageSize=12)

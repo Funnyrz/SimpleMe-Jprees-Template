@@ -3,33 +3,36 @@
 #define script()
 <script src="js/jquery.form.min.js"></script>
 #end
+<link href="css/markdown.css" rel="stylesheet">
 #define content()
 <div class="container yy-content">
     <div class="row">
         <div class="col-lg-12 col-md-12">
-            <div class="articleContent">
-                <div class="title">#(article.title)</div>
-                <!-- 访问量 ...-->
-                <div class="secTitleBar">
-                    <ul>
-                        <li>作者：#(article.user.nickname ??)</li>
-                        <li>分类：
-                            #articleCategories(article.id,"category")
-                            #for(category : categories)
-                            #(category.title ??)
-                            #end
-                            #end</li>
-                        <li>发表：#date(article.created)</li>
-                        <li>围观：#(article.viewCount ?? '0')</li>
-                        <li>评论：#(article.commentCount ?? '0')</li>
-                    </ul>
-                    <hr />
+            <article>
+                <div class="articleContent">
+                    <div class="title">#(article.title)</div>
+                    <!-- 访问量 ...-->
+                    <div class="secTitleBar">
+                        <ul>
+                            <li>作者：#(article.user.nickname ??)</li>
+                            <li>分类：
+                                #articleCategories(article.id,"category")
+                                #for(category : categories)
+                                #(category.title ??)
+                                #end
+                                #end</li>
+                            <li>发表：#date(article.created)</li>
+                            <li>围观：#(article.viewCount ?? '0')</li>
+                            <li>评论：#(article.commentCount ?? '0')</li>
+                        </ul>
+                        <hr />
+                    </div>
+                    <!-- 内容 -->
+                    <div class="articleCon">
+                        #(article.content ??)
+                    </div>
                 </div>
-                <!-- 内容 -->
-                <div class="articleCon">
-                    #(article.content ??)
-                </div>
-            </div>
+            </article>
             #if (true)
             <!-- 评论 -->
             <p class="comments-text">发表评论:</p>

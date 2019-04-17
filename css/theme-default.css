@@ -1,0 +1,136 @@
+body {
+    font-family: Helvetica,
+        Arial,
+        "PingFang SC",
+        "Microsoft YaHei",
+        "WenQuanYi Micro Hei",
+        "tohoma,sans-serif";
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #263646;
+    background-image: url(../img/bg-img.jpg)
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #424558;
+    background-image: -webkit-linear-gradient(45deg, rgba(255, 255, 255, .4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .4) 50%, rgba(255, 255, 255, .4) 75%, transparent 75%, transparent);
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em
+}
+
+::-webkit-scrollbar-corner {
+    background-color: transparent
+}
+
+/* 鼠标选取后的背景色 */
+::-moz-selection {
+    color: #fff;
+    background-color: #424558;
+}
+
+::selection {
+    color: #fff;
+    background-color: #424558;
+}
+
+a {
+    text-decoration: none;
+    color: #313131;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #424558;
+}
+
+.yy-foot {
+    color: #111;
+}
+
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #424558;
+    border-color: #424558;
+}
+
+.page-link,
+.commentCount {
+    color: #424558;
+}
+
+/* 
+.card-body {
+    border-top: 1px solid #DE946F;
+} */
+
+.card-body a:hover {
+    text-decoration: none;
+    color: #424558;
+}
+
+/* 
+.card {
+    background: #fff;
+} */
+
+.yy-top-navi {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.43);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+    background-color: #424558;
+}
+
+
+.commentBtn .btn {
+    background: #424558;
+}
+
+.articleCon h2 {
+    font-size: 1.4em;
+    margin: 40px 10px 20px 0;
+    padding-left: 9px;
+    border-left: 6px solid #424558 !important;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.yy-nav-head {
+    font-size: 25px;
+    color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #FFF;
+}
+
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show>.nav-link {
+    color: #e6f5ff;
+}
+
+.navbar-light .navbar-nav .nav-link:hover {
+    color: #e6f5ff;
+}
+
+h3.comments-title:after {
+    background: #424558;
+}

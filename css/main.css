@@ -4,7 +4,7 @@
     font-family: Microsoft Yahei, "微软雅黑", "Helvetica Neue", Helvetica, Hiragino Sans GB, WenQuanYi Micro Hei, sans-serif;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
 
@@ -41,13 +41,73 @@ textarea:focus,
     outline: 0
 }
 
-
 @media (min-width: 1200px) {
     .container {
         max-width: 970px;
     }
+
 }
 
+.banner {
+    margin-top: -10px;
+    background-color: #424558;
+    position: relative;
+    width: 100%;
+    height: 320px;
+    background-size: cover !important;
+    background-position: center center !important;
+}
+
+.header {
+    padding-top: 50px;
+    text-align: center;
+}
+
+.logoTheme {
+    cursor: pointer;
+}
+
+.logoTheme h3 {
+    width: 640px;
+    margin: 30px auto 0;
+    padding: 15px 0;
+    background: #fff;
+    color: #666;
+    letter-spacing: 5px;
+}
+
+.logo {
+    margin: 0 auto;
+    width: 130px;
+    height: 130px;
+    border: 0;
+    border-radius: 50%;
+}
+
+.logo img {
+    width: 130px;
+    height: 130px;
+    border: 0;
+    border-radius: 50%;
+    transition: all 1.6s cubic-bezier(.17, .67, .62, 1.22);
+    -webkit-transition: all 1.6s cubic-bezier(.17, .67, .62, 1.22);
+    -moz-transition: all 1.6s cubic-bezier(.17, .67, .62, 1.22);
+    -o-transition: all 1.6s cubic-bezier(.17, .67, .62, 1.22);
+    -ms-transition: all 1.6s cubic-bezier(.17, .67, .62, 1.22);
+}
+
+.logo img:hover {
+    transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    /* IE 9 */
+    -webkit-transform: rotate(360deg);
+    /* Safari and Chrome */
+}
+
+.yy-nav-head {
+    font-size: 25px;
+    color: #000;
+}
 
 .yy-content {
     margin-top: 70px;
@@ -117,7 +177,7 @@ textarea:focus,
     font-size: 10px;
     line-height: 26px;
     opacity: 0;
-    background-color: rgba(0, 0, 0, .5);
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .archive-content:hover {
@@ -443,7 +503,7 @@ textarea#comment:focus {
 }
 
 .banner-bg-header {
-    background: url(../img/banner-bg.jpg) no-repeat;
+    background-color: #424558;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -ms-background-size: cover;
@@ -472,6 +532,18 @@ textarea#comment:focus {
 @media screen and (max-width:660px) {
     .banner-bg-header .banner-title {
         font-size: 26px
+    }
+
+    .banner {
+        display: none;
+    }
+
+    .header {
+        display: none;
+    }
+
+    .logoTheme {
+        display: none;
     }
 
     .banner-bg-header .banner-sub-title {
