@@ -324,18 +324,22 @@ h3.comments-title:after {
 .comment .media-body .author_name {
     margin-bottom: 5px;
     font-size: 14px;
-    color: #777;
+    color: #000;
+}
+
+.comment .media-body {
+    padding-left: 10px;
 }
 
 .comment .media-body p {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 1.5em;
     color: #777;
 }
 
 .comment .comment-metadata {
     margin-left: 58px;
-    padding: 5px 0;
+    padding: 0px 0px;
 }
 
 .comment .comment-metadata span {
