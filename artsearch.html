@@ -12,11 +12,11 @@
     <div class="row">
         #articleSearchPage(pageSize=9)
         #for(article : articlePage.list)
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-3 col-md-3">
             <div class="card">
                 <div class="card-img">
                     <img src="#(article.showImage ? article.showImage  : 'img/default-img.png')" class="card-img-top"
-                        alt="#(article.title)" height="200" />
+                        alt="#(article.title)" height="170" />
                     <div class="archive-content">#maxLength(article.text,90)</div>
                 </div>
                 <div class="card-body">

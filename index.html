@@ -11,7 +11,7 @@
                 <div class="personInfo">
                     <div class="logo">
                         <a href="/">
-                            <img src="#(USER.avatar??)">
+                            <img src="#(USER.avatar??'img/head-img.jpg')">
                         </a>
                     </div>
                     <div class="logoTheme">
@@ -26,12 +26,12 @@
     <div class="row">
         #articlePage(pageSize=12)
         #for(article : articlePage.list)
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-3 col-md-3">
             <div class="card">
                 <div class="card-img">
                     <a href="#(article.url)">
                         <img src="#(article.showImage ? article.showImage  : 'img/default-img.png')"
-                            class="card-img-top" alt="#(article.title)" height="200" />
+                            class="card-img-top" alt="#(article.title)" height="170" />
                         <div class="archive-content">#maxLength(article.text,90)</div>
                     </a>
                 </div>

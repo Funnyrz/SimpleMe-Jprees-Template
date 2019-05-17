@@ -1,9 +1,36 @@
 #include("./_layout.html")
 #@mylaout()
 
-
+<script>
+    var path = window.location.pathname;
+    if (path.indexOf("index-") != -1) {
+        $("#hearer").hide();
+    } else {
+        $("#banner").hide();
+    }
+</script>
 #define content()
-<header class="banner-bg-header">
+<div class="banner" id="banner">
+    <!-- header -->
+    <div class="header container">
+        <!--个人信息-->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="personInfo">
+                    <div class="logo">
+                        <a href="/">
+                            <img src="#(USER.avatar??'img/head-img.jpg')">
+                        </a>
+                    </div>
+                    <div class="logoTheme">
+                        <h3>猛兽总是独行,牛羊才成群结对</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<header class="banner-bg-header" id="hearer">
     <h1 class="banner-title">分类</h1>
     <h4 class="banner-sub-title">与『
         #for(me: MENUS)
@@ -11,18 +38,19 @@
         #(me.text)
         #end
         #end
-        』相关的内容</h4>
+        』相关的内容
+    </h4>
 
 </header>
 <div class="container">
     <div class="row">
         #articlePage(pageSize=12)
         #for(article : articlePage.list)
-        <div class="col-lg-4 col-md-4">
+        <div class="col-lg-3 col-md-3">
             <div class="card">
                 <div class="card-img">
                     <img src="#(article.showImage ? article.showImage  : 'img/default-img.png')" class="card-img-top"
-                        alt="#(article.title)" height="200" />
+                        alt="#(article.title)" height="170" />
                     <div class="archive-content">#maxLength(article.text,90)</div>
                 </div>
                 <div class="card-body">

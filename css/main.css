@@ -42,9 +42,9 @@ textarea:focus,
 }
 
 @media (min-width: 1200px) {
-    .container {
+    /* .container {
         max-width: 970px;
-    }
+    } */
 
 }
 
@@ -115,13 +115,14 @@ textarea:focus,
 
 .yy-index-title {
     font-size: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     height: 3rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
     overflow: hidden;
 }
+
 
 .yy-foot {
     padding: 10px 0px 10px 0px;
@@ -130,7 +131,7 @@ textarea:focus,
 
 .card-body {
     flex: 1 1 auto;
-    padding: 10px 10px 10px 10px;
+    padding: 5px 10px;
 }
 
 .card-body a:hover {
@@ -140,15 +141,17 @@ textarea:focus,
 
 
 .card {
-    margin: 10px 20px;
+    margin: 10px 0px;
     overflow: hidden;
 }
 
 .card a {
-    color: #000
+    color: #555;
 }
 
 .card-img {
+    height: 50%;
+    max-height: 80%;
     position: relative;
     display: -ms-flexbox;
     display: flex;
@@ -159,6 +162,7 @@ textarea:focus,
     background-color: #fff;
     background-clip: border-box;
     overflow: hidden;
+    border-radius: 0;
 }
 
 .archive-content {

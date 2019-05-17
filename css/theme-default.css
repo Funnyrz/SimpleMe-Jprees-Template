@@ -73,10 +73,10 @@ a:hover {
     color: #424558;
 }
 
-/* 
+
 .card-body {
-    border-top: 1px solid #DE946F;
-} */
+    border-top: 1px solid #D4AF37;
+}
 
 .card-body a:hover {
     text-decoration: none;
